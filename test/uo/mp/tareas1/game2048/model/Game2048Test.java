@@ -18,6 +18,7 @@ public class Game2048Test {
 	private static int[][] SEMIFULL1_LEFTCOMPACTED = {{2,0,0},{4,0,0},{8,0,0}};
 	
 	private static int[][] SEMIFULL21 = {{0,2,4},{0,4,8},{0,8,16}};
+
 	private static int[][] SEMIFULL22 = {{2,4,0},{4,8,0},{8,16,0}};
 	private static int[][] SEMIFULL23 = {{2,0,4},{4,0,8},{8,0,16}};
 	private static int[][] SEMIFULL2_RIGHTCOMPACTED = {{0,2,4},{0,4,8},{0,8,16}};
