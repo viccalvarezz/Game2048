@@ -29,7 +29,7 @@ public class Game2048 {
 	private int[][] board;
 
 	/**
-	 * Constructor sin par�metros con tablero por defecto de 3*3 Inicialmente todas
+	 * Constructor sin parámetros con tablero por defecto de 3*3 Inicialmente todas
 	 * las posiciones con valor 0
 	 */
 	public Game2048() {

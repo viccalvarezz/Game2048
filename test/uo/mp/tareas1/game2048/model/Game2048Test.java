@@ -189,7 +189,7 @@ public class Game2048Test {
 
 	@Test
 	public void testCompactLeft(){
-		//Caso 1:matriz 3x3, los numeros de la columna uno pasan a la cero
+		//Caso 1:matriz 3x3, los números de la columna uno pasan a la cero
 		Game2048 b1 = new Game2048();
 		b1.setBoard(SEMIFULL11);
 		b1.compactLeft();

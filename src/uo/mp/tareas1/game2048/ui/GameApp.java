@@ -23,7 +23,7 @@ import uo.mp.tareas1.game2048.model.Game2048;
  * Copyright: Copyright (c) 2018
  * </p>
  * <p>
- * Empresa: Escuela de Ingenier�a Inform�tica - Universidad de Oviedo
+ * Empresa: Escuela de Ingeniería Inform�tica - Universidad de Oviedo
  * </p>
  * 
  * @author Victoria Alvarez Sordo
