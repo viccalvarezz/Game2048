@@ -18,8 +18,8 @@ import java.util.Random;
  * Empresa: Escuela de Ingenier�a Inform�tica - Uiversidad de Oviedo
  * </p>
  * 
- * @author Profesores-MP
- * @version 2.0
+ * @author Victoria Alvarez Sordo
+ * @version 29-01-2019
  */
 public class Game2048 {
 	public static final int MIN_DIMENSION = 3;
@@ -47,8 +47,8 @@ public class Game2048 {
 
 	public Game2048(int dimension) {
 
-		assertDimension(dimension);
-		board = new int[dimension][dimension];
+		if(assertDimension(dimension))
+			board = new int[dimension][dimension];
 		restart();
 	}
 
@@ -57,6 +57,7 @@ public class Game2048 {
 	 * @return la matriz del tablaro
 	 */
 	public int[][] getBoard() {
+
 		return board;
 	}
 
@@ -79,7 +80,7 @@ public class Game2048 {
 
 	
 	/**
-	 * A�ade un nuevo n�mero 2 en posici�n aleatoria
+	 * A�ade un nuevo número 2 en posición aleatoria
 	 * y pinta el tablero
 	 * 
 	 */
@@ -99,7 +100,7 @@ public class Game2048 {
 	 * Comprueba si el tablero est� lleno. Esto ocurre cuando todas las celdas o
 	 * posiciones del tablero tienen un n�mero distinto de cero
 	 * 
-	 * @return true si el tablero est� lleno
+	 * @return true si el tablero está lleno
 	 */
 
 	public boolean isBoardFull() {
@@ -114,75 +115,71 @@ public class Game2048 {
 	
 	/**
 	 * Compacta el tablero a la derecha compactando todas las filas
-	 * {0,0,4}
-	 * {2,4,2}
-	 * {0,0,0,0,0,64}
-	 *
-	 *
-	 *
-	 * {0,0,0,0,16,2}
-	 *
-	 * {0,2,2}
-	 * {2,4,2}
-	 * {0,0,2}
-	 *
-	 * {0,0,0}
-	 * {0,0,4}
-	 * {2,4,4}
 	 */
 	public void compactRight() {
 
 		for(int i=0;i<board.length;i++)
-			for(int j=0;j<board.length-1;j++)
-			{
-				for(int k=0;k<board.length;k++)
-					if(board[i][j]==board[i][j+1]||board[i][j+1]==0) {
-						board[i][j + 1] += board[i][j];
-						board[i][j]=EMPTY;
+			for(int j=0;j<board.length;j++) {
+				for (int k = 0; k < board.length - 1; k++)
+					if (board[i][k] == board[i][k + 1] || board[i][k + 1] == EMPTY) {
+						board[i][k + 1] += board[i][k];
+						board[i][k] = EMPTY;
 					}
 			}
-		/*for(int i=0;i<board.length;i++)
-			for(int j=board.length-1;j>=0;j++) {
-				if(board[i][j]==EMPTY) {
-					int k=j;
-					while (k>=0&&board[i][k]==EMPTY)
-						k--;
-					if(k!=-1) {
-						board[i][j] = board[i][k];
-						board[i][k] = 0;
-					}
-				}
-				while(s)
-
-			}*/
 
 	}
 	
 	/**
-	 * Compacta el tablero a la derecha compactando todas las filas
+	 * Compacta el tablero a la izquierda compactando todas las filas
+	 *
 	 */
 	public void compactLeft() {
-
+		for(int i=0;i<board.length;i++)
+			for(int j=0;j<board.length;j++)
+			{
+				for(int k=0;k<board.length-1;k++) {
+					if (board[i][k] == board[i][k+ 1]||(board[i][k]==EMPTY && board[i][k+1]!=EMPTY)) {
+						board[i][k] += board[i][k+ 1];
+						board[i][k + 1] = EMPTY;
+					}
+				}
+			}
 	}
 	
 	
 	
-	
-	/**
-	 * compacta toda la matriz hacia arriba
-	 */
-	public void compactUp() {
-		
-	}
-	
-
 	
 	/**
 	 * compacta toda la matriz hacia abajo
 	 */
 	public void compactDown() {
+		for(int i=0;i<board.length;i++)
+			for(int j=0;j<board.length;j++)
+			{
+				for(int k=0;k<board.length-1;k++)
+					if(board[k][i]==board[k+1][i]||board[k+1][i]==EMPTY) {
+						board[k+1][i] += board[k][i];
+						board[k][i]=EMPTY;
+					}
+			}
+	}
+	
 
-
+	
+	/**
+	 * cmpacta toda la matriz hacia arriba
+	 */
+	public void compactUp() {
+		for(int i=0;i<board.length;i++)
+			for(int j=0;j<board.length;j++)
+			{
+				for(int k=0;k<board.length-1;k++) {
+					if (board[k][i] == board[k+1][i]||(board[k][i]==EMPTY && board[k+1][i]!=EMPTY)) {
+						board[k][i] += board[k+1][i];
+						board[k+1][i] = EMPTY;
+					}
+				}
+			}
 	}
 
 	
@@ -191,21 +188,56 @@ public class Game2048 {
 	 * Inicializa el teclado con la matriz pasada como par�metro
 	 */
 	protected void setBoard(int[][] matrix) {
-		this.board = board;
+		this.board = matrix;
 	}
 
+	/**
+	 * Crea un tablero por defecto de 3x3 e inicializa todas sus casillas a 0 exceptuando una de ellas que tendrá
+	 * un número 2
+	 */
 	private void defectBoard(){
 		board = new int[MIN_DIMENSION][MIN_DIMENSION];
 		restart();
 	}
 
-	//ASERTOS PARA LOS PARÁMETROS
-
-	private void assertDimension(int dimension){
-		if (dimension<MIN_DIMENSION || dimension>MAX_DIMENSION) {
-			defectBoard();
-		}
+	/**
+	 *
+	 * @param row: fila
+	 * @param column: columna
+	 * @return devuelve el valor que se encuentra en la posición de la fila y columna pasados
+	 */
+	public int getValue(int row, int column)
+	{
+		assertMatrix(row,column);
+		return board[row][column];
 	}
 
+	//ASERTOS PARA LOS PARÁMETROS
+
+	/**
+	 *
+	 * @param dimension: dimension que se desea de la matriz, no puede ser mayor de 10 ni menor de 3
+	 * @return un valor booleano: true en caso de que la dimensión sea correcta. false en caso de que no sea correcta
+	 * y por esto, se creará un tablero con las dimensiones por defecto (3x3)
+	 */
+	private boolean assertDimension(int dimension){
+		if (dimension<MIN_DIMENSION || dimension>MAX_DIMENSION) {
+			defectBoard();
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Evalua los parámetros para ver si estos son correctos
+	 *
+	 * @param row:fila
+	 * @param column:columna
+	 */
+	private void assertMatrix(int row, int column)
+	{
+		if(row>=board.length||column>=board.length|| row < 0 || column < 0)
+			throw new RuntimeException("Error: la matriz no tiene la posición que proporcionas");
+	}
 
 }

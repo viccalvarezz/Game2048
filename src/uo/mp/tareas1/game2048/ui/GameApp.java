@@ -8,25 +8,25 @@ import uo.mp.tareas1.game2048.model.Game2048;
 
 /**
  * <p>
- * Título: Clase principal
+ * Tï¿½tulo: Clase principal
  * </p>
  * <p>
- * Descripción: 2048 es un juego en línea creado por Gabriele Cirulli. El
- * objetivo del juego es combinar números juntos (potencias de 2) con el fin de
- * alcanzar el máximo número 2048 y ganar el juego. Para mover los números en el
- * tablero, se debe elegir una dirección (arriba, derecha, abajo o izquierda).
- * Todos los números se mueven en la dirección elegida y pueden ocurrir dos
- * cosas: los números se juntan en una celda que tiene el mismo número o son
- * bloqueados si una celda contiene un número diferente.
+ * Descripciï¿½n: 2048 es un juego en lï¿½nea creado por Gabriele Cirulli. El
+ * objetivo del juego es combinar nï¿½meros juntos (potencias de 2) con el fin de
+ * alcanzar el mï¿½ximo nï¿½mero 2048 y ganar el juego. Para mover los nï¿½meros en el
+ * tablero, se debe elegir una direcciï¿½n (arriba, derecha, abajo o izquierda).
+ * Todos los nï¿½meros se mueven en la direcciï¿½n elegida y pueden ocurrir dos
+ * cosas: los nï¿½meros se juntan en una celda que tiene el mismo nï¿½mero o son
+ * bloqueados si una celda contiene un nï¿½mero diferente.
  * 
  * <p>
  * Copyright: Copyright (c) 2018
  * </p>
  * <p>
- * Empresa: Escuela de Ingeniería Informática - Universidad de Oviedo
+ * Empresa: Escuela de Ingenierï¿½a Informï¿½tica - Universidad de Oviedo
  * </p>
  * 
- * @author Profesores-MP
+ * @author Victoria Alvarez Sordo
  * @version 1.0
  */
 
@@ -44,7 +44,7 @@ public class GameApp {
 			System.out.print("JUEGO 2048\n");
 			game.restart();
 			do {
-				System.out.print("Mueve los números en una dirección [r R]/[l L]/[u U]/[d D]: ");
+				System.out.print("Mueve los nï¿½meros en una direcciï¿½n [r R]/[l L]/[u U]/[d D]: ");
 				switch (readCharacter()) {
 				case 'r':	
 				case 'R':
@@ -70,14 +70,14 @@ public class GameApp {
 
 			} while (!game.isBoardFull());
 			System.out.println("GAME OVER");
-			System.out.print("¿Quieres continuar? s/n: ");
+			System.out.print("ï¿½Quieres continuar? s/n: ");
 		} while (readCharacter() == 's');
 	}
 
 	/**
 	 * Lee un caracter de la entrada estandar (normalmente el teclado)
 	 * 
-	 * @return El caracter (en formato numérico) tecleado por el usuario.
+	 * @return El caracter (en formato numï¿½rico) tecleado por el usuario.
 	 */
 	private int readCharacter() {
 		InputStreamReader isr = new InputStreamReader(System.in);
@@ -86,7 +86,7 @@ public class GameApp {
 		try {
 			character = br.read();
 		} catch (IOException e) {
-			System.out.println("¡Error de lectura en la entrada de datos!");
+			System.out.println("ï¿½Error de lectura en la entrada de datos!");
 			System.exit(0);
 		}
 		return character;
